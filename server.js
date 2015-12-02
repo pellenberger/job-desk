@@ -21,6 +21,12 @@ var host = 'http://arrlee.jobarea.ch';
 setProxy(host, '/jobdesk');
 setProxy(host, '/arrlee');
 
+// Set cache manifest route
+app.get('/*.appcache', function(req, res) {
+  res.header('Content-Type', 'text/cache-manifest');
+  res.end('CACHE MANIFEST');
+});
+
 app.use(express.static(process.cwd()));
 
 http.createServer(app).listen(port, ipaddr);

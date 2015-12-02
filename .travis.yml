@@ -6,31 +6,27 @@ before_script:
 - npm install -g bower grunt-cli
 - bower install
 addons:
-  code_climate:
-    repo_token:
-      secure: Z1Bgklztdj5gNXcKG/ZLhjeu/hwz0Gk0hXwph8i/2l1WGt57gKNv/DPLavip4Ptn1JYgtUmVDVU+ggeB+bbW3eiB69DY8LVrn6h2irPkJf+J1YpcK8dsS2r587nAFz2MJQPJ2BDZ01fJgJFjOowHexYndIe/hknP3FGhf+6rR9U=
 #  sauce_connect:
 #    username: bblseco
 #    access_key:
 #      secure: ORVbeh4LHOQ/HXCoWKkZ9XL0mo62PbC2FO3HXgCR61FY8M735CK9NQCRQzqUva/HIJGzHhGcyvNcJjNxJKD/6VulFGBWwSfQ7z1/dYJl7psJwLBm7Ec5zWpC4cvopLoZXG44XLLoKj7k0eMP4vJ5GAeondrTG7BfTl83jmL52+A=
 deploy:
   provider: openshift
-  user: mediamatik@seco.admin.ch
+  user: pat18.e@gmail.com
   password:
-    secure: plOcc82kJsHZGx9N4aea/IQxZqOZ0qwH6RE4n9Leo4OqcGIlJjdNz1bjS1YfzOkiWn1jNdKqcjAhS/Gw3W2oPb7A1t/xk+7sF/2dLsGpkxod8w8f+2JNwzCDb9C0TCdG5zIFhq7t3V23scfXIe4z6dKrze2wZddQklqa7WsLmKROxSiuJWZSfHrGKuFoAWQLZYvfdHXtlT+SH/CugFub7b5gGdAs03jmq4N53eR/td3zccqOx56gWTI54rro81xKSFGvd/ykQd0H8gCn6EswcWJEeuGvDF3P0KIAlnv+M4OTCsodl7AaaOSph963AhU8dt4NreIFfKzE/vmy4tOSZ6le5EWPdg8zIijxgB007Oz6ZVL7m5TC181E1zxChdcu7TvN+TW+swmXxAO8vGzhrF2fbhaQb480uAOL/p7vMy20C9/+exadTaqfSQ1tIpSoHZWwQBvb5H7yI6JtRA7B8c3fXS15maM/BjIu2h8CInd61kxpndbX6nTnsnQ5VkCr3UaGeeltCS4B4j6MRVBUyIhrPiXwGQ8NyPL6VEKJhxeu16yAfu9qIP2ZeioNmp5DJ4jMqVQspCTt9kkmz73HrFYcDewZ/pWpjDB8Oo2m5iQFaIty5jsAHYBwlCOmMEkzXtLyGYy0yp6uYiCIhYKUAfINgUSQS9oE8FEGf3mBLPc=
+    secure: InrFMc761hbJRS4Hfqpvy0gzaF4YIlkbSuFivWCOlOvyUbV4aYPg9DAxARDYzlRkqND3ov9VlTEGJ5Zo5lfrGX25rOuMp1IH4sBFbPB2DjTxY9KwFMj/xOfKfcWtwsU/ePGX1CLP6pj+mcUrKOpTTg8BNAAbTIGmvoN8zjsJ3JzpJTK2oOwztEabpO7/fLdswfnfCnC9m7vTzftTGsroh8RaZ/AP1bkY5/Sj6cxGNJNPb/XhgALaJbRFBTwCut2K+vreCSV55SX3rgAxYgAUftEew5lCHhwblrWu2u3rORCqfbg3K8cne5IBKkdjK2f+AfFbMQUtI3Icz25xeht2e9ExXS/2PG7uhAmzgt2ssXWiPaWqfKxEbMrUO8XZrGo0/6P+w26ztDa0eQtm7dMUKn26WKYCmIviuGC3BPdHxLCSvGL/eA+3W2PzntreCuTOZFGmmDkIJFjUGxOet7p+d6GmOcULUvH4SlH9WiadbA4L1/I78mb/8pdCYGuTO/fg0FvCNF49KzdpF+CI8L4JoxpfX9zovpGGrSbeFm5S32mU8YJwUEyBXItDBmUvrHVaK0gAFbOhsr30IEyRLJvoOITiHe+LP2wtY854r82kgEYpPxYjjJcjusmZj36vt4N/a0DVYOM5o3zptp8NVjGqAdE7AqUqEJN8l4PjhmdMxbE=
   domain:
-    master: alvchegov
-    dev: alvch
+    master: pellenberger
   app:
     master: jobdesk
-    dev: jobdeskdev
   on:
-    repo: alv-ch/job-desk
+    repo: pellenberger/job-desk
 after_success:
 - grunt build-prod
 - cp server.js dist/
 - cp package.json dist/
 - cp -r .openshift dist/
+- cp manifest.appcache dist/
 - cd dist
 - git init
 - git config --global user.email "travis@localhost.localdomain"
@@ -40,7 +36,3 @@ after_success:
 - git add --all
 - git status
 - git commit -am "Travis change"
-after_script:
-- cat build/coverage/reports/lcov/lcov.info | codeclimate
-notifications:
-  slack: alv-ch:tf9xRwey0Crj0qdDxljP5lDX

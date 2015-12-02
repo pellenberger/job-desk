@@ -468,8 +468,8 @@ module.exports = function (grunt) {
         constants: {
           ENV: 'staging',
           VERSION: '<%= yeoman.app.version %>',
-          baseUrl: 'http://jobdeskdev-alvch.rhcloud.com/jobdesk',
-          arrleeUrl: 'http://jobdeskdev-alvch.rhcloud.com/arrlee',
+          baseUrl: 'http://jobdesk-pellenberger.rhcloud.com/jobdesk',
+          arrleeUrl: 'http://jobdesk-pellenberger.rhcloud.com/arrlee',
           supportedLanguages: ['de', 'fr', 'it', 'en']
         }
       },
@@ -507,6 +507,28 @@ module.exports = function (grunt) {
           path: 'node_modules/protractor/bin/',
           command: 'webdriver-manager start'
         }
+      }
+    },
+    pkg: grunt.file.readJSON('package.json'),
+    manifest: {
+      generate: {
+        options: {
+          basePath: '<%= yeoman.dist %>',
+          network: ['*'],
+          headcomment: " <%= pkg.name %> v<%= pkg.version %>",
+          timestamp: true,
+          hash: false
+        },
+        src: [
+          //'*.html',
+          //'assets/**/*.*',
+          //'assets/**/**/*.*',
+          //'i18n/**/*.*',
+          //'scripts/*.*',
+          //'views/**/*.*',
+          //'views/**/**/*.*'
+        ],
+        dest: 'manifest.appcache'
       }
     }
   });
@@ -565,7 +587,8 @@ module.exports = function (grunt) {
     'uglify',
     'rev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'manifest:generate'
   ]);
 
   grunt.registerTask('build-prod', [
