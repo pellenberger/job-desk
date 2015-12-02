@@ -5,23 +5,16 @@ node_js:
 before_script:
 - npm install -g bower grunt-cli
 - bower install
-addons:
-#  sauce_connect:
-#    username: bblseco
-#    access_key:
-#      secure: ORVbeh4LHOQ/HXCoWKkZ9XL0mo62PbC2FO3HXgCR61FY8M735CK9NQCRQzqUva/HIJGzHhGcyvNcJjNxJKD/6VulFGBWwSfQ7z1/dYJl7psJwLBm7Ec5zWpC4cvopLoZXG44XLLoKj7k0eMP4vJ5GAeondrTG7BfTl83jmL52+A=
+addons: 
 deploy:
   provider: openshift
   user: pat18.e@gmail.com
   password:
-    secure: InrFMc761hbJRS4Hfqpvy0gzaF4YIlkbSuFivWCOlOvyUbV4aYPg9DAxARDYzlRkqND3ov9VlTEGJ5Zo5lfrGX25rOuMp1IH4sBFbPB2DjTxY9KwFMj/xOfKfcWtwsU/ePGX1CLP6pj+mcUrKOpTTg8BNAAbTIGmvoN8zjsJ3JzpJTK2oOwztEabpO7/fLdswfnfCnC9m7vTzftTGsroh8RaZ/AP1bkY5/Sj6cxGNJNPb/XhgALaJbRFBTwCut2K+vreCSV55SX3rgAxYgAUftEew5lCHhwblrWu2u3rORCqfbg3K8cne5IBKkdjK2f+AfFbMQUtI3Icz25xeht2e9ExXS/2PG7uhAmzgt2ssXWiPaWqfKxEbMrUO8XZrGo0/6P+w26ztDa0eQtm7dMUKn26WKYCmIviuGC3BPdHxLCSvGL/eA+3W2PzntreCuTOZFGmmDkIJFjUGxOet7p+d6GmOcULUvH4SlH9WiadbA4L1/I78mb/8pdCYGuTO/fg0FvCNF49KzdpF+CI8L4JoxpfX9zovpGGrSbeFm5S32mU8YJwUEyBXItDBmUvrHVaK0gAFbOhsr30IEyRLJvoOITiHe+LP2wtY854r82kgEYpPxYjjJcjusmZj36vt4N/a0DVYOM5o3zptp8NVjGqAdE7AqUqEJN8l4PjhmdMxbE=
-  domain:
-    master: pellenberger
-  app:
-    master: jobdesk
+    secure: sWc7LzpcxyiVwvZg7TddPSDoOQdpaLXYy6KKSRdXOMuC4yrOqRoM1jBjcihOqrovh4ts1rfNV/dFkBXEj5M9wQJT7uzsEZQkvt2OCsYm53cW1WmNh0RcCB3K2FBIrLzv656AHGRFc6Ov0bsfzk7CTCVGXRWyjUTkc+hcED4dcFygUE7YN3d4Vb+AyV2hwF2YafEoQZzeC+WjgIloXz1uyKSt6gB5qlos6IlB2kh1yRhKJNq2iF5jzCpcZYLIJjf6xoay2QjAl9bWbvFRx0f9sTngQYjiwXVi/O0MYSTHqCteFdlFrIStJM4Y0lQkvRHteiGfsb62feUcj+ZnVJHTraZDWNN4BRtLiK2/tv7DR9KoN5ISlkC/PRHOwh5ozJLMoBJr60q4c7EOnpUJje/gIBZpXdZWByi08NDle4Z0IsSCgpU+s2j4oLqHBbdYAyohw1Rw62C1hB1ykoiADkgrqhRyfxdSj4ZCpPOm2C+/cisnETqsRFwWLdR3zArUwRK1rq6F8qZmFNl/mIOErasY5KUfzmJqgsa2FVW2BokQE0tV9yTzGfhe+IVVQXZmcAs2Xu++Gd7bVV7wF6iYtR8FjJYkjJBi54jAU/+JVX0OgnRlKr/pw/X4fRSe7FLYN/R4PInKLuUOUBjlObZZAuEgHrVUTcir9KHqY4gV7wxC134=
+  app: jobdesk
+  domain: pellenberger
   on:
     repo: pellenberger/job-desk
-    
 after_success:
 - grunt build-prod
 - cp server.js dist/
