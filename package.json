@@ -80,7 +80,8 @@
     "karma-jasmine-runner-reporter": "0.1.0",
     "karma-coverage": "0.4.2",
     "karma-jasmine-jquery": "0.1.1",
-    "topojson": "1.6.19"
+    "topojson": "1.6.19",
+    "grunt-manifest": "~0.4.4"
   },
   "scripts": {
     "start": "node server.js"
