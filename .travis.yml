@@ -21,6 +21,7 @@ deploy:
     master: jobdesk
   on:
     repo: pellenberger/job-desk
+    
 after_success:
 - grunt build-prod
 - cp server.js dist/
