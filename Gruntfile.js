@@ -382,6 +382,16 @@ module.exports = function (grunt) {
           }
         }
       ],
+      middleware: function() {
+        return [
+          function (req, res) {
+            if (url.parse(req.url).pathname.match(/\.appcache$/)) {
+              res.header('Content-Type', 'text/cache-manifest');
+              res.end('CACHE MANIFEST');
+            }
+          }
+        ]
+      },
       livereload: {
         options: {
           open: true,
@@ -528,7 +538,7 @@ module.exports = function (grunt) {
           //'views/**/*.*',
           //'views/**/**/*.*'
         ],
-        dest: 'manifest.appcache'
+        dest: '<%= yeoman.dist %>/manifest.appcache'
       }
     }
   });
@@ -598,6 +608,11 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build-staging', [
     'ngconstant:staging',
+    'build'
+  ]);
+
+  grunt.registerTask('build-local', [
+    'ngconstant:dev',
     'build'
   ]);
 

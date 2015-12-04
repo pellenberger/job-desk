@@ -1,0 +1,7 @@
+CACHE MANIFEST
+# This file is only there to serve a manifest file to client on dev mode, in order to avoid errors
+
+CACHE:
+
+NETWORK:
+*
