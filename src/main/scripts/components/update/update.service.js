@@ -5,7 +5,7 @@
   angular.module('job-desk')
     .factory('UpdateService', function ($window, $interval, $mdToast) {
 
-      var updateDelay = 6000;
+      var updateDelay = 10000;
       var toastHideDelay = 0;
       var appCache = $window.applicationCache;
 

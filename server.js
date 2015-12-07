@@ -26,7 +26,7 @@ app.use(express.static(process.cwd()));
 // Set cache manifest route
 app.get('/manifest.appcache', function(req, res) {
   res.header('Content-Type', 'text/cache-manifest');
-  res.end('CACHE MANIFEST');
+  res.end();
 });
 
 
