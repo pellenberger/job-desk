@@ -105,7 +105,7 @@
     hotkeysProvider.includeCheatSheet = false;
   });
 
-  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence, LocationsService, ConfigService, $interval, $window, UpdateService){
+  app.run(function($http, geolocation, $rootScope, $state, $cookies, $presence, LocationsService, ConfigService, $interval, $window, UpdateService, ENV){
 
     $rootScope.mobile=$.browser.mobile;
 
@@ -192,7 +192,9 @@
       $rootScope.userActive = true;
     });
 
-    UpdateService.init();
+    if (ENV != 'dev') {
+      UpdateService.init();
+    }
 
   });
 
